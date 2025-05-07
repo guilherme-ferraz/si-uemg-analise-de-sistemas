@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Controle Financeiro</title>
+</head>
+<body>
+
+    <h2>Tabela de Receitas</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Descrição</th>
+                <th>Valor</th>
+                <th>Data</th>
+                </tr>
+        </thead>
+        <tbody>
+            {% for receita in receitas %}
+            <tr>
+                <td>{{ receita.descricao }}</td>
+                <td>{{ receita.valor }}</td>
+                <td>{{ receita.data }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+
+    <h2>Tabela de Despesas</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Descrição</th>
+                <th>Valor</th>
+                <th>Data</th>
+                </tr>
+        </thead>
+        <tbody>
+            {% for despesa in despesas %}
+            <tr>
+                <td>{{ despesa.descricao }}</td>
+                <td>{{ despesa.valor }}</td>
+                <td>{{ despesa.data }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
