@@ -16,7 +16,8 @@ class TarefasController extends Controller
     {
         //
         $tarefas = Tarefas::all();
-        return response()->view("tarefas/index", compact(['tarefas']));
+        // dd($tarefas);
+        return response()->view('tarefas/index', compact(['tarefas']));
 
     }
 
@@ -41,7 +42,14 @@ class TarefasController extends Controller
 
         try {
             $tarefa->save();
-            dd($tarefa);
+
+            return response()->json([
+                'titulo' => $tarefa->titulo,
+                'descricao' => $tarefa->descricao,
+                'id' => $tarefa->id,
+                'created_at' => $tarefa->created_at,
+            ], 201);
+
         } catch (Exception $e) {
             dd($e);
         }
@@ -55,6 +63,11 @@ class TarefasController extends Controller
     public function show(string $id)
     {
         //
+        $tarefa = Tarefas::find($id);
+
+        return response()->view('tarefas/mostrar', compact(['tarefa']));
+
+
     }
 
     /**
@@ -79,5 +92,9 @@ class TarefasController extends Controller
     public function destroy(string $id)
     {
         //
+        $tarefa = Tarefas::find($id);
+
+        $tarefa->destroy();
+        
     }
 }

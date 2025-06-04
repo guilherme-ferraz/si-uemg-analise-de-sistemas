@@ -21,7 +21,11 @@
             @foreach ($tarefas as $tarefa)
             <tr>
                 <td>{{ $tarefa->id }}</td>
-                <td>{{ $tarefa->titulo }}</td>
+                <td>
+                    <a href="{{ route('tarefas.show', ['tarefa' => $tarefa->id]) }}">
+                        {{ $tarefa->titulo }}
+                    </a>
+                    </td>
                 <td>{{ $tarefa->descricao }}</td>
                 <td></td>
             </tr>
@@ -30,6 +34,9 @@
         </tbody>
         
     </table>
+
+    <br>
+    <p><a href="{{ route('tarefas.create') }}">Nova Tarefa</a></p>
     
 </body>
 </html>
